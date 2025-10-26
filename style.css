@@ -1,0 +1,139 @@
+/* Reset e base */
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #faf9f6;
+    /* fundo off-white */
+    color           : #333;
+    font-family     : 'Lato', sans-serif;
+    line-height     : 1.6;
+}
+
+/* Header */
+header {
+    position       : fixed;
+    top            : 0;
+    left           : 0;
+    width          : 100%;
+    background     : rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding        : 15px 40px;
+    z-index        : 1000;
+    border-bottom  : 1px solid #eee;
+}
+
+.logo img {
+    width : 270px;
+    /* logo maior */
+    height: auto;
+}
+
+nav a {
+    color          : #333;
+    margin-left    : 25px;
+    text-decoration: none;
+    font-weight    : 400;
+    font-size      : 1rem;
+    transition     : opacity 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.6;
+}
+
+/* Galeria estilo masonry */
+.gallery {
+    column-count: 3;
+    column-gap  : 10px;
+    padding     : 140px 10px 60px;
+}
+
+.gallery a {
+    display      : inline-block;
+    margin-bottom: 10px;
+    width        : 100%;
+    opacity      : 0;
+    transform    : translateY(30px);
+    transition   : all 0.8s ease-out;
+}
+
+.gallery a.visible {
+    opacity  : 1;
+    transform: translateY(0);
+}
+
+.gallery img {
+    width        : 100%;
+    border-radius: 4px;
+    transition   : transform 0.3s, opacity 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.01);
+    opacity  : 0.9;
+}
+
+/* Responsividade */
+@media (max-width: 1000px) {
+    .gallery {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        column-count: 1;
+    }
+
+    header {
+        flex-direction: column;
+        align-items   : center;
+    }
+
+    .logo svg {
+        width: 260px;
+    }
+
+    nav a {
+        margin: 10px;
+    }
+}
+
+/* Contato */
+.contato {
+    display        : flex;
+    flex-wrap      : wrap;
+    align-items    : center;
+    justify-content: center;
+    padding        : 80px 20px;
+    background     : #f8f8f8;
+    gap            : 40px;
+    border-top     : 1px solid #eee;
+}
+
+.contato img {
+    width        : 220px;
+    border-radius: 50%;
+}
+
+.contato div {
+    max-width: 500px;
+}
+
+.contato h2 {
+    font-family  : 'Playfair Display', serif;
+    margin-bottom: 15px;
+    font-size    : 1.6rem;
+}
+
+.contato a {
+    color          : #333;
+    text-decoration: underline;
+}

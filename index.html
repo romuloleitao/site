@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rômulo.JLeitão</title>
+
+    <!-- Fontes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <!-- Logo PNG -->
+            <img src="images/logo.png" alt="Rômulo.JLeitão" />
+        </div>
+        <nav>
+            <a href="#contato">Contato</a>
+            <a href="https://instagram.com/romulo.jleitao" target="_blank" aria-label="Instagram">
+                <!-- Ícone Instagram colorido -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26">
+                    <defs>
+                        <linearGradient id="instaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#feda75" />
+                            <stop offset="25%" stop-color="#fa7e1e" />
+                            <stop offset="50%" stop-color="#d62976" />
+                            <stop offset="75%" stop-color="#962fbf" />
+                            <stop offset="100%" stop-color="#4f5bd5" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2z"
+                        fill="url(#instaGrad)" />
+                    <circle cx="12" cy="12" r="3.5" fill="white" />
+                    <circle cx="17.5" cy="6.5" r=".8" fill="white" />
+                </svg>
+            </a>
+        </nav>
+    </header>
+
+    <main class="gallery">
+        <!-- Substitua as imagens abaixo pelas suas -->
+
+        <a href="images/foto2.jpg" class="glightbox"><img src="images/foto2.jpg" alt="Foto 2"></a>
+        <a href="images/foto3.jpg" class="glightbox"><img src="images/foto3.jpg" alt="Foto 3"></a>
+
+        <a href="images/foto4.jpg" class="glightbox"><img src="images/foto4.jpg" alt="Foto 4"></a>
+        <a href="images/foto5.jpg" class="glightbox"><img src="images/foto5.jpg" alt="Foto 5"></a>
+        <a href="images/foto6.jpg" class="glightbox"><img src="images/foto6.jpg" alt="Foto 5"></a>
+        <a href="images/foto1.jpg" class="glightbox"><img src="images/foto1.jpg" alt="Foto 1"></a>
+        <!-- adicione quantas quiser -->
+    </main>
+
+    <section id="contato" class="contato">
+        <img src="images/perfil.jpg" alt="Foto de Rômulo J. Leitão">
+        <div>
+            <h2>Contato</h2>
+            <p>Sou fotógrafo com foco em gastronomia e retratos, buscando capturar a autenticidade e o ambiente de cada
+                cena. Disponível para trabalhos em Sherbrooke e região.</p>
+            <p>E-mail: <a href="mailto:romulo@email.com">romulo@email.com</a></p>
+            <p>Instagram: <a href="https://instagram.com/romulo.jleitao" target="_blank">@romulo.jleitao</a></p>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
