@@ -16,10 +16,9 @@ body {
 /* Header */
 header {
     position       : relative;
-    /* não fica mais fixa no topo */
+    /* não fixa */
     width          : 100%;
     background     : #fff;
-    /* branca sólida */
     display        : flex;
     justify-content: space-between;
     align-items    : center;
@@ -34,7 +33,6 @@ header {
 nav {
     display    : flex;
     align-items: center;
-    /* alinha texto e ícone verticalmente */
 }
 
 nav a {
@@ -42,12 +40,12 @@ nav a {
     align-items    : center;
     justify-content: center;
     font-family    : 'Playfair Display', serif;
-    /* mesma fonte do footer */
     color          : #2a3b47;
     margin-left    : 25px;
     text-decoration: none;
     font-weight    : 500;
     font-size      : 2rem;
+    /* aumento de tamanho */
     letter-spacing : 0.5px;
     transition     : opacity 0.3s, transform 0.2s;
 }
@@ -58,13 +56,16 @@ nav a:hover {
 }
 
 .insta-icon svg {
-    width : 32px;
-    height: 32px;
+    width : 36px;
+    /* maior tamanho */
+    height: 36px;
+    stroke: #2a3b47;
+    /* sóbrio */
 }
 
+/* Footer */
 footer {
     background: #fff;
-    /* fundo branco como o header */
     border-top: 1px solid #eee;
     padding   : 40px 20px;
     text-align: center;
@@ -82,7 +83,6 @@ footer {
     width  : 180px;
     height : auto;
     opacity: 0.9;
-    /* leve suavização */
 }
 
 footer p {
@@ -91,16 +91,16 @@ footer p {
     color      : #2a3b47;
 }
 
-/* Galeria estilo masonry */
 .gallery {
-    column-count: 3;
-    column-gap  : 10px;
+    column-width: 300px;
+    /* largura mínima desejada para cada coluna */
+    column-gap  : 15px;
     padding     : 60px 10px 60px;
 }
 
 .gallery a {
     display      : inline-block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     width        : 100%;
     opacity      : 0;
     transform    : translateY(30px);
@@ -123,16 +123,27 @@ footer p {
     opacity  : 0.9;
 }
 
-/* Responsividade */
+/* Responsividade galeria */
 @media (max-width: 1000px) {
     .gallery {
-        column-count: 2;
+        column-width: 250px;
+        /* colunas levemente menores em tablet */
+        column-gap  : 10px;
     }
 }
 
 @media (max-width: 600px) {
     .gallery {
-        column-count: 1;
+        column-width: 150px;
+        /* ainda 2 colunas aproximadas no mobile */
+        column-gap  : 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery {
+        column-width: 180px;
+        /* mobile */
     }
 
     header {
@@ -140,12 +151,12 @@ footer p {
         align-items   : center;
     }
 
-    .logo svg {
-        width: 260px;
-    }
-
     nav a {
         margin: 10px;
+    }
+
+    .logo img {
+        width: 260px;
     }
 }
 
@@ -169,7 +180,6 @@ footer p {
     margin-bottom: 15px;
     font-size    : 1.6rem;
     color        : #2a3b47;
-    /* Azul neutro */
 }
 
 .contato p {
