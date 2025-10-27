@@ -16,7 +16,6 @@ body {
 /* Header */
 header {
     position       : relative;
-    /* não fixa */
     width          : 100%;
     background     : #fff;
     display        : flex;
@@ -45,7 +44,7 @@ nav a {
     text-decoration: none;
     font-weight    : 500;
     font-size      : 2rem;
-    /* aumento de tamanho */
+    /* tamanho equilibrado desktop */
     letter-spacing : 0.5px;
     transition     : opacity 0.3s, transform 0.2s;
 }
@@ -57,10 +56,9 @@ nav a:hover {
 
 .insta-icon svg {
     width : 36px;
-    /* maior tamanho */
+    /* maior no desktop */
     height: 36px;
     stroke: #2a3b47;
-    /* sóbrio */
 }
 
 /* Footer */
@@ -91,9 +89,10 @@ footer p {
     color      : #2a3b47;
 }
 
+/* Galeria estilo masonry */
 .gallery {
-    column-width: 300px;
-    /* largura mínima desejada para cada coluna */
+    column-width: 350px;
+    /* desktop maior, mas equilibrado */
     column-gap  : 15px;
     padding     : 60px 10px 60px;
 }
@@ -126,24 +125,17 @@ footer p {
 /* Responsividade galeria */
 @media (max-width: 1000px) {
     .gallery {
-        column-width: 250px;
-        /* colunas levemente menores em tablet */
-        column-gap  : 10px;
+        column-width: 280px;
+        /* tablet proporcional */
+        column-gap  : 12px;
     }
 }
 
 @media (max-width: 600px) {
     .gallery {
-        column-width: 150px;
-        /* ainda 2 colunas aproximadas no mobile */
+        column-width: 160px;
+        /* mobile mantém mosaico */
         column-gap  : 8px;
-    }
-}
-
-@media (max-width: 600px) {
-    .gallery {
-        column-width: 180px;
-        /* mobile */
     }
 
     header {
@@ -152,11 +144,18 @@ footer p {
     }
 
     nav a {
-        margin: 10px;
+        margin   : 10px;
+        font-size: 1.6rem;
+        /* reduz um pouco no mobile */
     }
 
     .logo img {
         width: 260px;
+    }
+
+    .insta-icon svg {
+        width : 28px;
+        height: 28px;
     }
 }
 
