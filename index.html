@@ -12,7 +12,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
         rel="stylesheet">
-
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
@@ -26,11 +25,18 @@
         <nav>
             <a href="#contato">Contact</a>
             <a href="https://instagram.com/romulo.jleitao" target="_blank" aria-label="Instagram" class="insta-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none"
-                    stroke="#2a3b47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+                    <defs>
+                        <linearGradient id="instagram-gradient" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#f58529" />
+                            <stop offset="30%" stop-color="#dd2a7b" />
+                            <stop offset="60%" stop-color="#8134af" />
+                            <stop offset="100%" stop-color="#515bd4" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="url(#instagram-gradient)" />
+                    <circle cx="12" cy="12" r="4" fill="#fff" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="#fff" />
                 </svg>
             </a>
         </nav>
@@ -38,8 +44,6 @@
 
     <main class="gallery">
         <!-- Substitua as imagens abaixo pelas suas -->
-
-
         <a href="images/foto4.jpg" class="glightbox"><img src="images/foto4.jpg" alt="Foto 4"></a>
         <a href="images/foto21.jpg" class="glightbox"><img src="images/foto21.jpg" alt="Foto 21"></a>
         <a href="images/foto13.jpg" class="glightbox"><img src="images/foto13.jpg" alt="Foto 13"></a>
@@ -60,8 +64,6 @@
         <a href="images/foto18.jpg" class="glightbox"><img src="images/foto18.jpg" alt="Foto 18"></a>
         <a href="images/foto19.jpg" class="glightbox"><img src="images/foto19.jpg" alt="Foto 19"></a>
         <a href="images/foto3.jpg" class="glightbox"><img src="images/foto3.jpg" alt="Foto 3"></a>
-
-        <!-- adicione quantas quiser -->
     </main>
 
     <section id="contato" class="contato">

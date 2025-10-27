@@ -7,7 +7,6 @@
 
 body {
     background-color: #faf9f6;
-    /* fundo off-white */
     color           : #333;
     font-family     : 'Lato', sans-serif;
     line-height     : 1.6;
@@ -40,25 +39,38 @@ nav a {
     justify-content: center;
     font-family    : 'Playfair Display', serif;
     color          : #2a3b47;
-    margin-left    : 25px;
+    margin-left    : 15px;
+    /* aproxima do logo e do ícone */
     text-decoration: none;
     font-weight    : 500;
-    font-size      : 2rem;
+    font-size      : 1.9rem;
     /* tamanho equilibrado desktop */
     letter-spacing : 0.5px;
-    transition     : opacity 0.3s, transform 0.2s;
+    transition     : color 0.3s, transform 0.2s;
 }
 
 nav a:hover {
-    opacity  : 0.7;
-    transform: translateY(-1px);
+    color    : #d1495b;
+    /* hover suave em tom vermelho/rosado */
+    transform: translateY(-2px);
 }
 
+/* Instagram */
 .insta-icon svg {
-    width : 36px;
-    /* maior no desktop */
-    height: 36px;
-    stroke: #2a3b47;
+    width      : 36px;
+    height     : 36px;
+    margin-left: 8px;
+    /* aproxima do texto */
+    stroke     : none;
+    /* remove contorno */
+}
+
+.insta-icon rect {
+    fill: url(#instagram-gradient);
+}
+
+.insta-icon circle {
+    fill: #fff;
 }
 
 /* Footer */
@@ -92,7 +104,6 @@ footer p {
 /* Galeria estilo masonry */
 .gallery {
     column-width: 350px;
-    /* desktop maior, mas equilibrado */
     column-gap  : 15px;
     padding     : 60px 10px 60px;
 }
@@ -126,7 +137,6 @@ footer p {
 @media (max-width: 1000px) {
     .gallery {
         column-width: 280px;
-        /* tablet proporcional */
         column-gap  : 12px;
     }
 }
@@ -134,7 +144,6 @@ footer p {
 @media (max-width: 600px) {
     .gallery {
         column-width: 160px;
-        /* mobile mantém mosaico */
         column-gap  : 8px;
     }
 
@@ -144,9 +153,8 @@ footer p {
     }
 
     nav a {
-        margin   : 10px;
+        margin   : 8px;
         font-size: 1.6rem;
-        /* reduz um pouco no mobile */
     }
 
     .logo img {
@@ -154,8 +162,9 @@ footer p {
     }
 
     .insta-icon svg {
-        width : 28px;
-        height: 28px;
+        width      : 28px;
+        height     : 28px;
+        margin-left: 5px;
     }
 }
 
