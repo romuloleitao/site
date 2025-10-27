@@ -15,44 +15,87 @@ body {
 
 /* Header */
 header {
-    position       : fixed;
-    top            : 0;
-    left           : 0;
+    position       : relative;
+    /* não fica mais fixa no topo */
     width          : 100%;
-    background     : rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
+    background     : #fff;
+    /* branca sólida */
     display        : flex;
     justify-content: space-between;
     align-items    : center;
-    padding        : 15px 40px;
-    z-index        : 1000;
+    padding        : 20px 40px;
     border-bottom  : 1px solid #eee;
 }
 
 .logo img {
-    width : 270px;
-    /* logo maior */
-    height: auto;
+    width: 270px;
+}
+
+nav {
+    display    : flex;
+    align-items: center;
+    /* alinha texto e ícone verticalmente */
 }
 
 nav a {
-    color          : #333;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    font-family    : 'Playfair Display', serif;
+    /* mesma fonte do footer */
+    color          : #2a3b47;
     margin-left    : 25px;
     text-decoration: none;
-    font-weight    : 400;
-    font-size      : 1rem;
-    transition     : opacity 0.3s;
+    font-weight    : 500;
+    font-size      : 1.1rem;
+    letter-spacing : 0.5px;
+    transition     : opacity 0.3s, transform 0.2s;
 }
 
 nav a:hover {
-    opacity: 0.6;
+    opacity  : 0.7;
+    transform: translateY(-1px);
+}
+
+.insta-icon svg {
+    width : 24px;
+    height: 24px;
+}
+
+footer {
+    background: #fff;
+    /* fundo branco como o header */
+    border-top: 1px solid #eee;
+    padding   : 40px 20px;
+    text-align: center;
+    color     : #2a3b47;
+}
+
+.footer-content {
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    gap           : 15px;
+}
+
+.footer-logo {
+    width  : 180px;
+    height : auto;
+    opacity: 0.9;
+    /* leve suavização */
+}
+
+footer p {
+    font-family: 'Playfair Display', serif;
+    font-size  : 0.95rem;
+    color      : #2a3b47;
 }
 
 /* Galeria estilo masonry */
 .gallery {
     column-count: 3;
     column-gap  : 10px;
-    padding     : 140px 10px 60px;
+    padding     : 60px 10px 60px;
 }
 
 .gallery a {
@@ -108,32 +151,33 @@ nav a:hover {
 
 /* Contato */
 .contato {
-    display        : flex;
-    flex-wrap      : wrap;
-    align-items    : center;
-    justify-content: center;
-    padding        : 80px 20px;
-    background     : #f8f8f8;
-    gap            : 40px;
-    border-top     : 1px solid #eee;
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+    text-align    : center;
+    padding       : 80px 20px;
+    background    : #f8f8f8;
+    border-top    : 1px solid #eee;
 }
 
-.contato img {
-    width        : 220px;
-    border-radius: 50%;
-}
-
-.contato div {
-    max-width: 500px;
+.contato-texto {
+    max-width: 600px;
 }
 
 .contato h2 {
     font-family  : 'Playfair Display', serif;
     margin-bottom: 15px;
     font-size    : 1.6rem;
+    color        : #2a3b47;
+    /* Azul neutro */
+}
+
+.contato p {
+    color        : #444;
+    margin-bottom: 10px;
 }
 
 .contato a {
-    color          : #333;
+    color          : #2a3b47;
     text-decoration: underline;
 }
