@@ -47,7 +47,7 @@ nav a {
     margin-left    : 25px;
     text-decoration: none;
     font-weight    : 500;
-    font-size      : 1.1rem;
+    font-size      : 2rem;
     letter-spacing : 0.5px;
     transition     : opacity 0.3s, transform 0.2s;
 }
@@ -58,8 +58,8 @@ nav a:hover {
 }
 
 .insta-icon svg {
-    width : 24px;
-    height: 24px;
+    width : 32px;
+    height: 32px;
 }
 
 footer {
