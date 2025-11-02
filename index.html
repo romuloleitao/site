@@ -2,15 +2,15 @@
 <html lang="fr-CA">
 
 <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Rômulo | Photographe Gastronomie, Événements et Identité Visuelle à Sherbrooke et partout au
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rômulo | Photographe Gastronomie, Lifestyle, Événements et Identité Visuelle à Sherbrooke et partout au
                 Québec</title>
 
         <meta name="description"
-                content="Photographe professionnel à Sherbrooke, Québec. Spécialisé en photographie gastronomique, photos de menus, identité visuelle, branding et événements corporatifs. Disponible à Sherbrooke, Magog, Granby, Montréal, Drummondville, Victoriaville et partout au Québec." />
+                content="Photographe professionnel à Sherbrooke, Québec. Spécialisé en photographie gastronomique, lifestyle, identité visuelle, branding et événements corporatifs. Disponible à Sherbrooke, Magog, Granby, Montréal, Drummondville, Victoriaville et partout au Québec." />
         <meta name="keywords"
-                content="photographe Sherbrooke, photographie gastronomique, photographe culinaire, photo de menu, identité visuelle, branding, photographie d’événement, photographe corporatif, photographie professionnelle, Sherbrooke, Québec" />
+                content="photographe Sherbrooke, photographie gastronomique, photographe culinaire, photo lifestyle, identité visuelle, branding, photographie d'événement, photographe corporatif, photographie professionnelle, Sherbrooke, Québec" />
         <meta name="author" content="Rômulo Leitão" />
         <meta name="robots" content="index, follow" />
         <meta name="geo.region" content="CA-QC" />
@@ -21,20 +21,13 @@
 
         <!-- Open Graph -->
         <meta property="og:title"
-                content="Rômulo Leitão | Photographe Gastronomie, Événements et Identité Visuelle à Sherbrooke" />
+                content="Rômulo Leitão | Photographe Gastronomie, Lifestyle, Événements et Identité Visuelle à Sherbrooke" />
         <meta property="og:description"
-                content="Photographe professionnel basé à Sherbrooke, spécialisé en photographie gastronomique, branding, menus et événements corporatifs. Disponible partout au Québec." />
+                content="Photographe professionnel basé à Sherbrooke, spécialisé en photographie gastronomique, lifestyle, branding et événements corporatifs. Disponible partout au Québec." />
         <meta property="og:image" content="https://www.romulo.studio/images/logo.png" />
         <meta property="og:url" content="https://www.romulo.studio/" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="fr_CA" />
-
-        <!-- Twitter Cards -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Rômulo Leitão | Photographe Gastronomie et Événements au Québec" />
-        <meta name="twitter:description"
-                content="Photographe professionnel à Sherbrooke spécialisé en gastronomie, branding et événements corporatifs." />
-        <meta name="twitter:image" content="https://www.romulo.studio/images/logo.png" />
 
         <!-- Favicons -->
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
@@ -42,144 +35,627 @@
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,500;1,500&display=swap"
-                rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+                rel="stylesheet">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="style.css" />
-        <link href="https://unpkg.com/glightbox/dist/css/glightbox.min.css" rel="stylesheet" />
-
-        <!-- Structured Data -->
-        <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Rômulo Leitão Photographe",
-    "image": "https://www.romulo.studio/images/logo.png",
-    "description": "Photographe professionnel à Sherbrooke, Québec, spécialisé en photographie gastronomique, événements et identité visuelle.",
-    "url": "https://www.romulo.studio/",
-    "telephone": "",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Sherbrooke",
-      "addressRegion": "Québec",
-      "addressCountry": "CA"
-    },
-    "sameAs": [
-      "https://instagram.com/romulo.jleitao"
-    ]
-  }
-  </script>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://unpkg.com/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
 </head>
 
-<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<body>
         <header>
                 <div class="logo">
-                        <a href="https://www.romulo.studio/" target="_blank" aria-label="Aller au site">
-                                <img src="images/logo.png"
-                                        alt="Rômulo Leitão - Photographe professionnel à Sherbrooke" />
+                        <a href="#" class="logo-link" aria-label="Rômulo Photographe - Retour à l'accueil"
+                                onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+                                <img src="images/logo.png" alt="Rômulo Leitão - Photographe professionnel à Sherbrooke"
+                                        width="270" height="80">
                         </a>
                 </div>
-                <nav>
-                        <a href="#contato" class="contact-link">Contact</a>
-                        <a href="https://instagram.com/romulo.jleitao" target="_blank" aria-label="Instagram"
-                                class="insta-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28">
+                <nav aria-label="Navigation principale">
+                        <a href="#services" class="nav-link">Services</a>
+                        <a href="#contato" class="nav-link">Contact</a>
+                        <a href="https://instagram.com/romulo.jleitao" target="_blank" rel="noopener"
+                                aria-label="Suivez-moi sur Instagram" class="nav-link insta-link">
+                                <svg class="instagram-icon" viewBox="0 0 24 24" width="24" height="24">
                                         <defs>
-                                                <linearGradient id="instagram-gradient" x1="0" y1="0" x2="1" y2="1">
-                                                        <stop offset="0%" stop-color="#f58529" />
-                                                        <stop offset="30%" stop-color="#dd2a7b" />
-                                                        <stop offset="60%" stop-color="#8134af" />
-                                                        <stop offset="100%" stop-color="#515bd4" />
+                                                <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%"
+                                                        y2="100%">
+                                                        <stop offset="0%" stop-color="#fdf497" />
+                                                        <stop offset="5%" stop-color="#fdf497" />
+                                                        <stop offset="45%" stop-color="#fd5949" />
+                                                        <stop offset="60%" stop-color="#d6249f" />
+                                                        <stop offset="100%" stop-color="#285AEB" />
                                                 </linearGradient>
                                         </defs>
-                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
-                                                fill="url(#instagram-gradient)" />
-                                        <circle cx="12" cy="12" r="4" fill="#fff" />
-                                        <circle cx="17.5" cy="6.5" r="1" fill="#fff" />
+                                        <path fill="url(#instagram-gradient)"
+                                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                                 </svg>
+                                Instagram
                         </a>
                 </nav>
         </header>
 
-        <main class="gallery">
-                <a href="images/foto15.jpg" class="glightbox"><img src="images/foto15.jpg"
-                                alt="Événement corporatif ou mariage à Sherbrooke"></a>
-                <a href="images/foto14.jpg" class="glightbox"><img src="images/foto14.jpg"
-                                alt="Photographie gastronomique : photos de menu"></a>
-                <a href="images/foto24.jpg" class="glightbox"><img src="images/foto24.jpg"
-                                alt="Photographie gastronomique : photos de menu"></a>
-                <a href="images/foto25.jpg" class="glightbox"><img src="images/foto25.jpg"
-                                alt="Photographie gastronomique : photos de menu"></a>
+        <!-- Galerie style Pinterest comme page d'accueil -->
+        <section id="portfolio" class="gallery" id="accueil">
+                <div class="gallery-container">
+                        <div class="portfolio-tabs">
+                                <button class="tab-btn active" data-category="all">Tous</button>
+                                <button class="tab-btn" data-category="gastronomie">Gastronomie</button>
+                                <button class="tab-btn" data-category="identite">Identité Visuelle</button>
+                                <button class="tab-btn" data-category="evenements">Événements</button>
+                                <button class="tab-btn" data-category="lifestyle">Lifestyle</button>
+                        </div>
 
-                <a href="images/foto2.jpg" class="glightbox"><img src="images/foto2.jpg"
-                                alt="Photographie gastronomique : plat présenté pour restaurant"></a>
-                <a href="images/foto11.jpg" class="glightbox"><img src="images/foto11.jpg"
-                                alt="Photographie d'événements à Sherbrooke"></a>
-                <a href="images/foto20.jpg" class="glightbox"><img src="images/foto20.jpg"
-                                alt="Événement corporatif à Sherbrooke"></a>
-                <a href="images/foto12.jpg" class="glightbox"><img src="images/foto12.jpg"
-                                alt="Photographie gastronomique : ambiance et détails de table"></a>
+                        <div class="gallery-grid">
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto14.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto14.jpg"
+                                                        alt="Photographie gastronomique - plat raffiné" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto24.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto24.jpg"
+                                                        alt="Photographie culinaire - présentation artistique"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto25.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto25.jpg" alt="Photo de menu restaurant"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto2.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto2.jpg" alt="Plat gastronomique professionnel"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto12.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto12.jpg" alt="Événement de course à pied"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto23.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto23.jpg" alt="Cuisine créative" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto6.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto6.jpg" alt="Mariage" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto37.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto37.jpg" alt="Politique" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto35.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto35.jpg" alt="Plantation" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto36.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto36.jpg" alt="Restaurant" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto10.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto10.jpg" alt="Création gastronomique"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto4.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto4.jpg" alt="Photographie de restaurant"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto13.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto13.jpg" alt="Portrait" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto41.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto41.jpg" alt="Portrait famille" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto8.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto8.jpg" alt="Course a pied" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto9.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto9.jpg" alt="Piste de danse" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto16.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto16.jpg" alt="Piste de danse" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto17.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto17.jpg" alt="Course a pied" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto3.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto3.jpg" alt="Mariage" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto15.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto15.jpg" alt="Portrait" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto38.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto38.jpg" alt="Portrait" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto27.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto27.jpg" alt="Portrait" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto11.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto11.jpg" alt="Événement professionnel"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto20.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto20.jpg" alt="Paysage de parc" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto22.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto22.jpg" alt="restaurant" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="gastronomie">
+                                        <a href="images/foto40.jpg" class="glightbox" data-gallery="gastronomie">
+                                                <img src="images/foto40.jpg" alt="restaurant" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto7.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto7.jpg" alt="Événement networking" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto19.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto19.jpg" alt="Réception d'entreprise"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto21.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto21.jpg" alt="Famille" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="lifestyle">
+                                        <a href="images/foto32.jpg" class="glightbox" data-gallery="lifestyle">
+                                                <img src="images/foto32.jpg" alt="Famille" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto5.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto5.jpg" alt="Lancement de produit" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto33.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto33.jpg" alt="Politique" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto34.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto34.jpg" alt="Politique" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto26.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto26.jpg" alt="Plantation" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto39.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto39.jpg" alt="Restaurant" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto28.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto28.jpg" alt="Entreprise de pâtes et de pizzas"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto29.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto29.jpg" alt="Entreprise de pâtes et de pizzas"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto30.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto30.jpg" alt="Entreprise de pâtes et de pizzas"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto31.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto31.jpg" alt="Entreprise de pâtes et de pizzas"
+                                                        loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto1.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto1.jpg" alt="Piste de danse" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto18.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto18.jpg" alt="Course a pied" loading="lazy">
+                                        </a>
+                                </div>
 
-                <a href="images/foto13.jpg" class="glightbox"><img src="images/foto13.jpg"
-                                alt="Portrait professionnel et branding à Sherbrooke"></a>
-
-                <a href="images/foto22.jpg" class="glightbox"><img src="images/foto22.jpg"
-                                alt="Couverture d'événements à Sherbrooke"></a>
-                <a href="images/foto23.jpg" class="glightbox"><img src="images/foto23.jpg"
-                                alt="Photographie gastronomique : photos de menu"></a>
-                <a href="images/foto1.jpg" class="glightbox"><img src="images/foto1.jpg"
-                                alt="Événement ou portrait à Sherbrooke"></a>
-                <a href="images/foto6.jpg" class="glightbox"><img src="images/foto6.jpg"
-                                alt="Photographie gastronomique : plat de chef à Sherbrooke"></a>
-                <a href="images/foto7.jpg" class="glightbox"><img src="images/foto7.jpg"
-                                alt="Couverture d'événement à Sherbrooke"></a>
-                <a href="images/foto8.jpg" class="glightbox"><img src="images/foto8.jpg"
-                                alt="Portrait d'identité visuelle à Sherbrooke"></a>
-                <a href="images/foto9.jpg" class="glightbox"><img src="images/foto9.jpg"
-                                alt="Portrait ou branding professionnel"></a>
-                <a href="images/foto10.jpg" class="glightbox"><img src="images/foto10.jpg"
-                                alt="Photographie gastronomique : plat gastronomique pour menu"></a>
-
-                <a href="images/foto16.jpg" class="glightbox"><img src="images/foto16.jpg"
-                                alt="Portraits ou branding professionnel"></a>
-                <a href="images/foto17.jpg" class="glightbox"><img src="images/foto17.jpg"
-                                alt="Portrait pour identité visuelle"></a>
-                <a href="images/foto18.jpg" class="glightbox"><img src="images/foto18.jpg"
-                                alt="Événement ou portrait professionnel"></a>
-                <a href="images/foto19.jpg" class="glightbox"><img src="images/foto19.jpg"
-                                alt="Photographie événementielle à Sherbrooke"></a>
-                <a href="images/foto21.jpg" class="glightbox"><img src="images/foto21.jpg"
-                                alt="Événement corporatif à Sherbrooke, Québec"></a>
-
-
-                <a href="images/foto3.jpg" class="glightbox"><img src="images/foto3.jpg"
-                                alt="Portrait ou identité visuelle"></a>
-                <a href="images/foto4.jpg" class="glightbox"><img src="images/foto4.jpg"
-                                alt="Photographie gastronomique : plat pour menu de restaurant à Sherbrooke"></a>
-                <a href="images/foto5.jpg" class="glightbox"><img src="images/foto5.jpg"
-                                alt="Événement culturel ou corporatif"></a>   
-                <a href="images/foto26.jpg" class="glightbox"><img src="images/foto26.jpg"
-                                alt="Photographie événementielle à Sherbrooke"></a>
-        </main>
-
-        <section id="contato" class="contato">
-                <div class="contato-texto">
-                        <h2>Contact</h2>
-                        <p>Basé à Sherbrooke, je me déplace partout au Québec : Magog, Granby, Montréal, Drummondville,
-                                Victoriaville et autres.</p>
-                        <p>Courriel : <a href="mailto:romulojleitao@gmail.com">romulojleitao@gmail.com</a></p>
-                        <p>Instagram : <a href="https://instagram.com/romulo.jleitao"
-                                        target="_blank">@romulo.jleitao</a></p>
+                        </div>
                 </div>
         </section>
 
+        <!-- Seção Services -->
+        <section id="services" class="services">
+                <div class="services-container">
+                        <h2>Services Professionnels</h2>
+                        <p class="services-subtitle">Des solutions photographiques sur mesure pour vos projets</p>
+
+                        <div class="services-grid">
+                                <!-- Photographie Gastronomique -->
+                                <div class="service-card" data-service="Photographie Gastronomique">
+                                        <h3>Photographie Gastronomique</h3>
+                                        <p class="service-description">Mettez en valeur votre univers culinaire avec des
+                                                images qui éveillent
+                                                les sens et séduisent vos clients.</p>
+                                        <div class="service-price">À partir de <strong>150$</strong></div>
+                                        <div class="service-details">
+                                                <h4>Session Découverte</h4>
+                                                <ul class="service-features">
+                                                        <li>3 créations culinaires photographiées</li>
+                                                        <li>Direction artistique et stylisme</li>
+                                                        <li>Retouches professionnelles avancées</li>
+                                                </ul>
+                                        </div>
+                                        <button class="service-cta contact-trigger">Demander un devis</button>
+                                </div>
+                                <!-- Identité Visuelle -->
+                                <div class="service-card" data-service="Identité Visuelle">
+                                        <h3>Identité Visuelle</h3>
+                                        <p class="service-description">Créez une image cohérente et impactante pour
+                                                votre entreprise. Images pour vos réseaux sociaux,
+                                                votre site web, vos supports marketing, etc.</p>
+                                        <div class="service-price">À partir de <strong>300$</strong></div>
+                                        <div class="service-details">
+                                                <h4>Pack photo complet</h4>
+                                                <ul class="service-features">
+                                                        <li>Audit de votre identité actuel</li>
+                                                        <li>Session photo stratégique</li>
+                                                        <li>Ensemble d'images de produits, de services et
+                                                                d'environnement</li>
+                                                </ul>
+                                        </div>
+                                        <button class="service-cta contact-trigger">Demander un devis</button>
+                                </div>
+
+
+                                <!-- Événements -->
+                                <div class="service-card" data-service="Événements">
+                                        <h3>Événements</h3>
+                                        <p class="service-description">Immortalisez vos moments uniques avec une
+                                                couverture discrète et
+                                                professionnelle. Événements d'entreprise, congrès, fêtes ou autres.</p>
+                                        <div class="service-price">À partir de <strong>150$</strong></div>
+                                        <div class="service-details">
+                                                <h4>Forfait Événementiel</h4>
+                                                <ul class="service-features">
+                                                        <li>Photos spontanées et portraits</li>
+                                                        <li>Toutes les photos de l'événement</li>
+                                                        <li>Album digital organisé</li>
+                                                </ul>
+                                        </div>
+                                        <button class="service-cta contact-trigger">Demander un devis</button>
+                                </div>
+                                <!-- Lifestyle -->
+                                <div class="service-card" data-service="Lifestyle">
+                                        <h3>Lifestyle</h3>
+                                        <p class="service-description">Des photos authentiques qui capturent les moments
+                                                de vie, les
+                                                portraits naturels et les scènes du quotidien avec une touche
+                                                artistique.</p>
+                                        <div class="service-price">À partir de <strong>100$</strong></div>
+                                        <div class="service-details">
+                                                <h4>Session Lifestyle</h4>
+                                                <ul class="service-features">
+                                                        <li>Portraits, famille ou moments de vie</li>
+                                                        <li>Conseils vestimentaires et de mise en scène</li>
+                                                        <li>Adapté aux réseaux sociaux et usage personnel</li>
+                                                </ul>
+                                        </div>
+                                        <button class="service-cta contact-trigger">Demander un devis</button>
+                                </div>
+                        </div>
+
+                        <div class="services-info">
+                                <div class="info-card">
+                                        <h4>📞 Consultation Gratuite</h4>
+                                        <p>Échangeons sur votre projet sans engagement pour définir la meilleure
+                                                approche.</p>
+                                </div>
+                                <div class="info-card">
+                                        <h4>🚚 Déplacement Inclus</h4>
+                                        <p>Intervention dans tout l'Estrie et régions avoisinantes sans frais
+                                                supplémentaires.</p>
+                                </div>
+                                <div class="info-card">
+                                        <h4>⚡ Livraison Rapide</h4>
+                                        <p>Restitution de vos images retouchées dans des délais optimisés.</p>
+                                </div>
+                        </div>
+                </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section id="contato" class="contato">
+                <div class="contato-container">
+                        <div class="contato-texto">
+                                <h2>Travaillons Ensemble</h2>
+                                <p>Basé à Sherbrooke, je me déplace partout au Québec: Magog, Granby, Montréal,
+                                        Drummondville,
+                                        Victoriaville et autres pour capturer l'essence unique
+                                        de votre projet.
+                                        Professionnels et particuliers, je m'adapte à vos besoins.</p>
+
+                                <div class="contact-methods">
+                                        <div class="contact-method">
+                                                <div class="method-icon">📧</div>
+                                                <div class="method-content">
+                                                        <h4>Email</h4>
+                                                        <a
+                                                                href="mailto:romulojleitao@gmail.com">romulojleitao@gmail.com</a>
+                                                </div>
+                                        </div>
+
+                                        <div class="contact-method">
+                                                <div class="method-icon">📱</div>
+                                                <div class="method-content">
+                                                        <h4>Téléphone</h4>
+                                                        <a href="tel:+18198435057">+1 (819) 943-5057</a>
+                                                </div>
+                                        </div>
+                                        <div class="contact-method">
+                                                <div class="method-icon">📷</div>
+                                                <div class="method-content">
+                                                        <h4>Instagram</h4>
+                                                        <a href="https://instagram.com/romulo.jleitao" target="_blank"
+                                                                rel="noopener">@romulo.jleitao</a>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                        <div class="form-container">
+                                <h3>Demande de Devis</h3>
+                                <form id="mainContactForm" class="contact-form"
+                                        action="https://formsubmit.co/romulojleitao@gmail.com" method="POST">
+                                        <input type="hidden" name="_subject"
+                                                value="Nouvelle demande de devis - romulo.studio">
+                                        <input type="hidden" name="_template" value="table">
+                                        <input type="hidden" name="_captcha" value="false">
+
+                                        <div class="form-grid">
+                                                <div class="form-group">
+                                                        <label for="main_name">Nom complet *</label>
+                                                        <input type="text" id="main_name" name="name" required>
+                                                </div>
+
+                                                <div class="form-group">
+                                                        <label for="main_email">Courriel *</label>
+                                                        <input type="email" id="main_email" name="email" required>
+                                                </div>
+
+                                                <div class="form-group">
+                                                        <label for="main_phone">Téléphone</label>
+                                                        <input type="tel" id="main_phone" name="phone">
+                                                </div>
+
+                                                <div class="form-group">
+                                                        <label for="main_city">Ville</label>
+                                                        <input type="text" id="main_city" name="city"
+                                                                placeholder="Votre ville">
+                                                </div>
+
+                                                <div class="form-group full-width">
+                                                        <label for="main_service">Service souhaité *</label>
+                                                        <select id="main_service" name="service" required>
+                                                                <option value="">Sélectionnez un service</option>
+                                                                <option value="Photographie Gastronomique">Photographie
+                                                                        Gastronomique</option>
+                                                                <option value="Lifestyle">Lifestyle</option>
+                                                                <option value="Événements">Événements</option>
+                                                                <option value="Identité Visuelle">Identité Visuelle
+                                                                </option>
+                                                                <option value="Autre">Autre projet</option>
+                                                        </select>
+                                                </div>
+
+                                                <div class="form-group full-width">
+                                                        <label for="main_message">Description du projet *</label>
+                                                        <textarea id="main_message" name="message" rows="5" required
+                                                                placeholder="Décrivez votre projet, vos objectifs, dates envisagées, et toute information pertinente..."></textarea>
+                                                </div>
+                                        </div>
+
+                                        <button type="submit" class="submit-btn">
+                                                <span class="btn-text">Envoyer ma demande</span>
+                                                <span class="btn-loading" style="display: none;">
+                                                        <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                                                                <circle cx="12" cy="12" r="10" stroke="currentColor"
+                                                                        stroke-width="2" fill="none"
+                                                                        stroke-linecap="round" stroke-dasharray="32"
+                                                                        stroke-dashoffset="32">
+                                                                        <animate attributeName="stroke-dashoffset"
+                                                                                dur="1s" values="32;0"
+                                                                                repeatCount="indefinite" />
+                                                                        <animateTransform attributeName="transform"
+                                                                                type="rotate" dur="1s"
+                                                                                values="0 12 12;360 12 12"
+                                                                                repeatCount="indefinite" />
+                                                                </circle>
+                                                        </svg>
+                                                        Envoi en cours...
+                                                </span>
+                                        </button>
+                                </form>
+
+                                <div id="mainFormMessage" class="form-message"></div>
+                        </div>
+                </div>
+        </section>
+
+        <!-- Footer avec fond blanc -->
         <footer>
                 <div class="footer-content">
-                        <img src="images/logo.png" alt="Rômulo Jorge Leitão" class="footer-logo" />
+                        <div class="footer-main">
+                                <img src="images/logo.png" alt="Rômulo Jorge Leitão" class="footer-logo">
+                                <div class="footer-info">
+                                        <p>Photographe Professionnel</p>
+                                        <p>Situé à Sherbrooke, disponible dans tout le Québec</p>
+                                </div>
+                        </div>
+
+                        <div class="footer-contact">
+                                <div class="footer-social">
+                                        <a href="https://instagram.com/romulo.jleitao" target="_blank" rel="noopener"
+                                                aria-label="Suivez-moi sur Instagram" class="social-link">
+                                                <svg class="instagram-icon" viewBox="0 0 24 24" width="20" height="20">
+                                                        <defs>
+                                                                <linearGradient id="instagram-gradient-footer" x1="0%"
+                                                                        y1="0%" x2="100%" y2="100%">
+                                                                        <stop offset="0%" stop-color="#fdf497" />
+                                                                        <stop offset="5%" stop-color="#fdf497" />
+                                                                        <stop offset="45%" stop-color="#fd5949" />
+                                                                        <stop offset="60%" stop-color="#d6249f" />
+                                                                        <stop offset="100%" stop-color="#285AEB" />
+                                                                </linearGradient>
+                                                        </defs>
+                                                        <path fill="url(#instagram-gradient-footer)"
+                                                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                                </svg>
+                                                @romulo.jleitao
+                                        </a>
+                                </div>
+                                <div class="footer-links">
+                                        <a href="mailto:romulojleitao@gmail.com">romulojleitao@gmail.com</a>
+                                        <a href="tel:+18198435057">+1 (819) 943-5057</a>
+                                </div>
+                        </div>
+                </div>
+                <div class="footer-bottom">
                         <p>&copy; 2025 Rômulo Jorge Leitão — Tous droits réservés.</p>
                 </div>
         </footer>
+
+        <!-- Modal de Contact Rapide -->
+        <div id="contactModal" class="modal">
+                <div class="modal-content">
+                        <button class="modal-close" aria-label="Fermer le modal">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" />
+                                </svg>
+                        </button>
+
+                        <div class="modal-header">
+                                <h2>Demande Rapide</h2>
+                                <p>Obtenez un devis personnalisé</p>
+                        </div>
+
+                        <form id="quickContactForm" class="contact-form"
+                                action="https://formsubmit.co/romulojleitao@gmail.com" method="POST">
+                                <input type="hidden" name="_subject" value="Demande rapide de devis - romulo.studio">
+                                <input type="hidden" name="_template" value="table">
+                                <input type="hidden" name="_captcha" value="false">
+
+                                <div class="form-group">
+                                        <label for="quick_name">Nom complet *</label>
+                                        <input type="text" id="quick_name" name="name" required>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="quick_email">Courriel *</label>
+                                        <input type="email" id="quick_email" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="quick_phone">Téléphone</label>
+                                        <input type="tel" id="quick_phone" name="phone">
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="quick_city">Ville</label>
+                                        <input type="text" id="quick_city" name="city" placeholder="Votre ville">
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="quick_service">Service intéressé *</label>
+                                        <select id="quick_service" name="service" required>
+                                                <option value="">Sélectionnez un service</option>
+                                                <option value="Photographie Gastronomique">Photographie Gastronomique
+                                                </option>
+                                                <option value="Lifestyle">Lifestyle</option>
+                                                <option value="Événements">Événements</option>
+                                                <option value="Identité Visuelle">Identité Visuelle</option>
+                                                <option value="Autre">Autre projet</option>
+                                        </select>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="quick_message">Votre projet *</label>
+                                        <textarea id="quick_message" name="message" rows="4" required
+                                                placeholder="Décrivez brièvement votre besoin..."></textarea>
+                                </div>
+
+                                <button type="submit" class="submit-btn">
+                                        <span class="btn-text">Envoyer ma demande</span>
+                                        <span class="btn-loading" style="display: none;">
+                                                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                                                        <circle cx="12" cy="12" r="10" stroke="currentColor"
+                                                                stroke-width="2" fill="none" stroke-linecap="round"
+                                                                stroke-dasharray="32" stroke-dashoffset="32">
+                                                                <animate attributeName="stroke-dashoffset" dur="1s"
+                                                                        values="32;0" repeatCount="indefinite" />
+                                                                <animateTransform attributeName="transform"
+                                                                        type="rotate" dur="1s"
+                                                                        values="0 12 12;360 12 12"
+                                                                        repeatCount="indefinite" />
+                                                        </circle>
+                                                </svg>
+                                                Envoi en cours...
+                                        </span>
+                                </button>
+                        </form>
+
+                        <div id="quickFormMessage" class="form-message"></div>
+                </div>
+        </div>
 
         <script src="https://unpkg.com/glightbox/dist/js/glightbox.min.js"></script>
         <script src="script.js"></script>
