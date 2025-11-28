@@ -3,22 +3,46 @@ const lightbox = GLightbox({
     selector: '.glightbox',
     touchNavigation: true,
     loop: true,
-    zoomable: false, // Désactive le zoom pour la protection
-    draggable: false, // Désactive le drag pour la protection
+    zoomable: false,
+    draggable: false,
 });
 
-// Gestion du portfolio et des fonctionnalités
+// Gestion du site et des fonctionnalités
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Rômulo Studio - Site initialisé');
+
+    // Animation d'apparition des éléments au scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observer les sections principales
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
     // Filtrage des portfolios
     const tabBtns = document.querySelectorAll('.tab-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     // Fonction pour filtrer les éléments
     function filterGallery(category) {
+        console.log(`Filtrage de la galerie par: ${category}`);
+        
         galleryItems.forEach(item => {
             if (category === 'all' || item.getAttribute('data-category') === category) {
                 item.style.display = 'inline-block';
-                // Animation d'apparition
                 setTimeout(() => {
                     item.style.opacity = '1';
                     item.style.transform = 'translateY(0)';
@@ -48,25 +72,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const category = this.getAttribute('data-category');
             filterGallery(category);
+            
+            // Tracking analytics
+            trackEvent('Gallery Filter', 'click', category);
         });
     });
 
     // Animation d'apparition des éléments de la galerie
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '50px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observer les éléments de la galerie
     galleryItems.forEach(item => {
         observer.observe(item);
     });
@@ -74,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Modal functionality
     const modal = document.getElementById('contactModal');
     const contactTriggers = document.querySelectorAll('.contact-trigger');
-    const serviceCards = document.querySelectorAll('.service-card');
+    const forfaitCards = document.querySelectorAll('.forfait-card');
     const closeBtn = document.querySelector('.modal-close');
     
     // Formulaires
@@ -83,49 +95,78 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainFormMessage = document.getElementById('mainFormMessage');
     const quickFormMessage = document.getElementById('quickFormMessage');
 
-    // Ouvrir le modal avec service pré-sélectionné
-    function openModalWithService(serviceName = '') {
-        document.body.classList.add('modal-open');
+    // Ouvrir le modal avec forfait pré-sélectionné
+    function openModalWithForfait(forfaitName = '') {
+        console.log('Ouverture du modal avec forfait:', forfaitName);
+        
+        document.body.style.overflow = 'hidden';
         modal.classList.add('show');
         
-        // Pré-remplir le service si spécifié
-        if (serviceName && quickContactForm) {
+        // Pré-remplir le forfait si spécifié
+        if (forfaitName && quickContactForm) {
             const serviceSelect = quickContactForm.querySelector('select[name="service"]');
             if (serviceSelect) {
-                serviceSelect.value = serviceName;
+                serviceSelect.value = forfaitName;
+                console.log('Forfait pré-rempli:', forfaitName);
             }
         }
         
         setTimeout(() => {
-            const firstInput = quickContactForm.querySelector('input, select, textarea');
+            const firstInput = quickContactForm ? quickContactForm.querySelector('input, select, textarea') : null;
             if (firstInput) firstInput.focus();
         }, 300);
+        
+        // Tracking analytics
+        trackEvent('Modal', 'open', forfaitName || 'general');
     }
 
-    // Ouvrir le modal depuis les boutons
+    // Ouvrir le modal depuis les boutons "Me contacter"
     contactTriggers.forEach(trigger => {
         trigger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            const serviceCard = this.closest('.service-card');
-            const serviceName = serviceCard ? serviceCard.getAttribute('data-service') : '';
-            openModalWithService(serviceName);
+            const forfaitName = this.getAttribute('data-forfait') || this.getAttribute('data-service');
+            console.log('Clic sur contact trigger:', forfaitName);
+            openModalWithForfait(forfaitName);
         });
     });
 
-    // Ouvrir le modal depuis les cartes de service
-    serviceCards.forEach(card => {
+    // Ouvrir le modal depuis les cartes de forfait (uniquement si on clique sur la carte, pas sur le bouton)
+    forfaitCards.forEach(card => {
         card.addEventListener('click', function(e) {
             // Ne pas ouvrir le modal si on clique sur le bouton (géré séparément)
-            if (e.target.closest('.service-cta')) {
+            if (e.target.closest('.forfait-cta')) {
                 return;
             }
-            const serviceName = this.getAttribute('data-service');
-            openModalWithService(serviceName);
+            
+            // Ne pas ouvrir le modal si on clique sur des éléments interactifs
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+                return;
+            }
+            
+            const forfaitHeader = this.querySelector('.forfait-header h3');
+            const forfaitName = forfaitHeader ? forfaitHeader.textContent.replace(/[📦💼🎯]/g, '').trim() : '';
+            console.log('Clic sur carte forfait:', forfaitName);
+            openModalWithForfait(forfaitName);
         });
     });
 
     // Fermer le modal
+    function closeModal() {
+        console.log('Fermeture du modal');
+        modal.classList.add('closing');
+        document.body.style.overflow = '';
+        
+        setTimeout(() => {
+            modal.classList.remove('show', 'closing');
+            if (quickContactForm) quickContactForm.reset();
+            if (quickFormMessage) quickFormMessage.style.display = 'none';
+        }, 300);
+        
+        // Tracking analytics
+        trackEvent('Modal', 'close', 'user_action');
+    }
+
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', function(e) {
         if (e.target === modal) closeModal();
@@ -135,17 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
-
-    function closeModal() {
-        modal.classList.add('closing');
-        document.body.classList.remove('modal-open');
-        
-        setTimeout(() => {
-            modal.classList.remove('show', 'closing');
-            if (quickContactForm) quickContactForm.reset();
-            if (quickFormMessage) quickFormMessage.style.display = 'none';
-        }, 300);
-    }
 
     // Gestion des formulaires
     if (mainContactForm) {
@@ -167,10 +197,13 @@ document.addEventListener('DOMContentLoaded', function() {
             name: form.querySelector('input[name="name"]').value,
             email: form.querySelector('input[name="email"]').value,
             phone: form.querySelector('input[name="phone"]')?.value || '',
+            company: form.querySelector('input[name="company"]')?.value || '',
             city: form.querySelector('input[name="city"]')?.value || '',
             service: form.querySelector('select[name="service"]').value,
             message: form.querySelector('textarea[name="message"]').value
         };
+
+        console.log('Données du formulaire:', formData);
 
         // Validation
         if (!formData.name || !formData.email || !formData.service || !formData.message) {
@@ -199,8 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (response.ok) {
-                showMessage('✅ Message envoyé avec succès! Je vous répondrai dans les plus brefs délais.', 'success', messageElement);
+                showMessage('✅ Message envoyé avec succès! Je vous contacterai dans les plus brefs délais pour votre consultation gratuite.', 'success', messageElement);
                 form.reset();
+                
+                // Tracking analytics
+                trackEvent('Form', 'submit_success', formData.service);
                 
                 if (isQuick) {
                     setTimeout(() => {
@@ -214,6 +250,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             console.error('Erreur:', error);
             showMessage('❌ Erreur lors de l\'envoi. Veuillez réessayer ou me contacter directement à romulojleitao@gmail.com', 'error', messageElement);
+            
+            // Tracking analytics
+            trackEvent('Form', 'submit_error', formData.service);
         } finally {
             btnText.style.display = 'flex';
             btnLoading.style.display = 'none';
@@ -244,30 +283,68 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href !== '#contato') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+            
+            // Ne pas appliquer le smooth scroll pour les liens de contact
+            if (href === '#contato') {
+                return;
+            }
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Tracking analytics
+                trackEvent('Navigation', 'smooth_scroll', href);
             }
         });
     });
 
+    // Header scroll effect
+    let lastScroll = 0;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = 'none';
+            header.style.transform = 'translateY(0)';
+            return;
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+
     // Protection des images contre le clic droit
     document.addEventListener('contextmenu', function(e) {
-        if (e.target.tagName === 'IMG') {
+        if (e.target.tagName === 'IMG' && e.target.closest('.gallery-item')) {
             e.preventDefault();
+            showTempMessage('🔒 Les images sont protégées', 'info');
             return false;
         }
     });
 
     // Protection contre le drag and drop
     document.addEventListener('dragstart', function(e) {
-        if (e.target.tagName === 'IMG') {
+        if (e.target.tagName === 'IMG' && e.target.closest('.gallery-item')) {
             e.preventDefault();
             return false;
         }
@@ -279,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
         img.addEventListener('error', function() {
             this.style.opacity = '0.5';
             this.style.filter = 'grayscale(100%)';
-            console.log('Image non chargée:', this.src);
+            console.warn('Image non chargée:', this.src);
         });
         
         img.addEventListener('load', function() {
@@ -287,21 +364,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialisation du filtrage lifestyle
-    initializeLifestyleFilter();
-});
-
-// Fonction pour initialiser le filtrage lifestyle
-function initializeLifestyleFilter() {
-    // Vérifier si des éléments lifestyle existent
-    const lifestyleItems = document.querySelectorAll('.gallery-item[data-category="lifestyle"]');
-    console.log(`Nombre d'éléments lifestyle trouvés: ${lifestyleItems.length}`);
-    
-    // Animation spéciale pour les éléments lifestyle
-    lifestyleItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
+    // Animation des éléments de différentiation
+    const diffItems = document.querySelectorAll('.differentiator-item');
+    diffItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+        observer.observe(item);
     });
-}
+
+    // Initialisation des fonctionnalités
+    initializeSiteFeatures();
+});
 
 // Re-initialize lightbox après le filtrage
 function reinitializeLightbox() {
@@ -321,62 +393,64 @@ function reinitializeLightbox() {
     });
 }
 
+// Initialisation des fonctionnalités du site
+function initializeSiteFeatures() {
+    console.log('🎯 Rômulo Studio - Production de Contenu Visuel & Stratégie Marketing');
+    console.log('📍 Basé à Sherbrooke - Disponible dans tout le Québec');
+    console.log('📧 romulojleitao@gmail.com');
+    console.log('📱 +1 (819) 943-5057');
+    
+    // Vérifier que tous les éléments essentiels sont présents
+    const essentialElements = [
+        'header',
+        '.hero',
+        '#approche',
+        '#pourquoi',
+        '#forfaits',
+        '#services',
+        '#processus',
+        '.gallery-grid',
+        '#contato',
+        'footer'
+    ];
+    
+    essentialElements.forEach(selector => {
+        const element = document.querySelector(selector);
+        if (!element) {
+            console.warn('Élément manquant:', selector);
+        } else {
+            console.log(`✅ ${selector} chargé`);
+        }
+    });
+
+    // Vérifier le fonctionnement des cartes cliquables
+    const forfaitCards = document.querySelectorAll('.forfait-card');
+    console.log(`✅ ${forfaitCards.length} cartes de forfait configurées`);
+
+    const contactTriggers = document.querySelectorAll('.contact-trigger');
+    console.log(`✅ ${contactTriggers.length} boutons de contact configurés`);
+
+    // Ajouter la classe loaded au body pour les animations
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 100);
+}
+
 // Protection supplémentaire
 document.addEventListener('DOMContentLoaded', function() {
     // Désactiver les touches de fonction pour les images
     document.addEventListener('keydown', function(e) {
-        // Bloquer F12 (DevTools)
-        if (e.key === 'F12') {
+        // Bloquer F12 (DevTools) seulement sur les images
+        if (e.key === 'F12' && e.target.closest('.gallery-item')) {
             e.preventDefault();
-            return false;
-        }
-        // Bloquer Ctrl+Shift+I (DevTools)
-        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-            e.preventDefault();
-            return false;
-        }
-        // Bloquer Ctrl+U (View Source)
-        if (e.ctrlKey && e.key === 'u') {
-            e.preventDefault();
-            return false;
-        }
-        // Bloquer Ctrl+S (Save)
-        if (e.ctrlKey && e.key === 's') {
-            e.preventDefault();
-            return false;
-        }
-        // Bloquer Ctrl+P (Print)
-        if (e.ctrlKey && e.key === 'p') {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // Empêcher l'inspection d'élément
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-    });
-
-    // Empêcher le clic droit partout
-    document.addEventListener('contextmenu', function(e) {
-        if (e.target.tagName === 'IMG') {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    // Empêcher le drag and drop des images
-    document.addEventListener('dragstart', function(e) {
-        if (e.target.tagName === 'IMG') {
-            e.preventDefault();
+            showTempMessage('🔒 Fonction désactivée pour la protection des images', 'info');
             return false;
         }
     });
 
     // Empêcher la sélection de texte sur les images
     document.addEventListener('selectstart', function(e) {
-        if (e.target.tagName === 'IMG') {
+        if (e.target.tagName === 'IMG' && e.target.closest('.gallery-item')) {
             e.preventDefault();
             return false;
         }
@@ -471,8 +545,10 @@ window.addEventListener('scroll', function() {
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
         // Page cachée - économiser les ressources
+        console.log('Page cachée');
     } else {
         // Page visible - reprendre les animations
+        console.log('Page visible');
     }
 });
 
@@ -494,32 +570,64 @@ if (!window.addEventListener) {
 // Gestion des erreurs de réseau
 window.addEventListener('online', function() {
     console.log('Connexion rétablie');
+    showTempMessage('✅ Connexion rétablie', 'success');
 });
 
 window.addEventListener('offline', function() {
     console.log('Connexion perdue');
-    const messages = document.querySelectorAll('.form-message');
-    messages.forEach(message => {
-        if (message.style.display === 'block') {
-            message.textContent = '❌ Connexion perdue. Veuillez vérifier votre connexion internet.';
-            message.className = 'form-message error';
-        }
-    });
+    showTempMessage('⚠️ Connexion perdue', 'warning');
 });
 
+// Fonction pour afficher des messages temporaires
+function showTempMessage(message, type = 'info') {
+    const tempMsg = document.createElement('div');
+    tempMsg.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        color: white;
+        font-weight: 500;
+        z-index: 10000;
+        animation: slideInRight 0.3s ease;
+        max-width: 300px;
+    `;
+    
+    if (type === 'success') {
+        tempMsg.style.background = '#27ae60';
+    } else if (type === 'warning') {
+        tempMsg.style.background = '#f39c12';
+    } else if (type === 'error') {
+        tempMsg.style.background = '#e74c3c';
+    } else {
+        tempMsg.style.background = '#3498db';
+    }
+    
+    tempMsg.textContent = message;
+    document.body.appendChild(tempMsg);
+    
+    setTimeout(() => {
+        tempMsg.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(tempMsg);
+        }, 300);
+    }, 3000);
+}
+
 // Export des fonctions principales pour un usage externe si nécessaire
-window.RomuloPhotography = {
+window.RomuloStudio = {
     reinitializeLightbox: reinitializeLightbox,
-    openContactModal: function(serviceName = '') {
+    openContactModal: function(forfaitName = '') {
         const modal = document.getElementById('contactModal');
         if (modal) {
-            document.body.classList.add('modal-open');
+            document.body.style.overflow = 'hidden';
             modal.classList.add('show');
             
-            if (serviceName) {
+            if (forfaitName) {
                 const serviceSelect = document.querySelector('#quickContactForm select[name="service"]');
                 if (serviceSelect) {
-                    serviceSelect.value = serviceName;
+                    serviceSelect.value = forfaitName;
                 }
             }
         }
@@ -528,47 +636,174 @@ window.RomuloPhotography = {
         const modal = document.getElementById('contactModal');
         if (modal) {
             modal.classList.add('closing');
-            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
             setTimeout(() => {
                 modal.classList.remove('show', 'closing');
             }, 300);
         }
     },
-    filterLifestyle: function() {
-        const lifestyleBtn = document.querySelector('.tab-btn[data-category="lifestyle"]');
-        if (lifestyleBtn) {
-            lifestyleBtn.click();
+    filterGallery: function(category) {
+        const tabBtn = document.querySelector(`.tab-btn[data-category="${category}"]`);
+        if (tabBtn) {
+            tabBtn.click();
+        }
+    },
+    scrollToSection: function(sectionId) {
+        const target = document.querySelector(sectionId);
+        if (target) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
         }
     }
 };
 
-// Initialisation finale
+// Menu Hamburger functionality
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Site Rômulo Photography chargé avec succès');
+    const menuToggle = document.createElement('button');
+    menuToggle.className = 'menu-toggle';
+    menuToggle.setAttribute('aria-label', 'Ouvrir le menu');
+    menuToggle.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+    `;
+
+    const nav = document.querySelector('nav');
+    const header = document.querySelector('header');
     
-    // Vérifier que tous les éléments essentiels sont présents
-    const essentialElements = [
-        'header',
-        '.gallery-grid',
-        '#services',
-        '#contato',
-        'footer'
-    ];
-    
-    essentialElements.forEach(selector => {
-        const element = document.querySelector(selector);
-        if (!element) {
-            console.warn('Élément manquant:', selector);
+    // Insert menu toggle button
+    header.appendChild(menuToggle);
+
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
+
+    // Toggle menu function
+    function toggleMenu() {
+        menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Event listeners
+    menuToggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking on nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 968) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            toggleMenu();
         }
     });
 
-    // Log pour vérifier le bon fonctionnement du service lifestyle
-    const lifestyleService = document.querySelector('.service-card:nth-child(2) h3');
-    if (lifestyleService && lifestyleService.textContent.includes('Lifestyle')) {
-        console.log('✅ Service Lifestyle correctement configuré');
-    }
-
-    // Vérifier le fonctionnement des cartes cliquables
-    const serviceCards = document.querySelectorAll('.service-card');
-    console.log(`✅ ${serviceCards.length} cartes de service configurées avec click`);
+    // Close menu on resize if window becomes larger
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 968 && nav.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
 });
+
+// Analytics personnalisé
+function trackEvent(category, action, label) {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+            'event_category': category,
+            'event_label': label
+        });
+    }
+    
+    // Log pour le développement
+    console.log(`📊 Analytics: ${category} - ${action} - ${label}`);
+}
+
+// Suivi des clics sur les CTA
+document.addEventListener('DOMContentLoaded', function() {
+    const ctaButtons = document.querySelectorAll('.cta-button, .forfait-cta, .contact-trigger');
+    ctaButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            const buttonType = this.classList.contains('primary') ? 'primary' : 'secondary';
+            trackEvent('CTA', 'click', `${buttonType} - ${buttonText}`);
+        });
+    });
+});
+
+// Service Worker pour le cache (optionnel)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+}
+
+// Initialisation finale
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🎨 Site Rômulo Studio complètement chargé et fonctionnel');
+    
+    // Animation CSS pour les messages temporaires
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+
+// Gestion des performances - Préchargement des images critiques
+function preloadCriticalImages() {
+    const criticalImages = [
+        'images/logo.png',
+        // Ajoutez ici les images critiques à précharger
+    ];
+    
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// Préchargement au chargement de la page
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadCriticalImages);
+} else {
+    preloadCriticalImages();
+}
