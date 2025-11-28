@@ -125,47 +125,61 @@
                                         width="180" height="50">
                         </a>
                 </div>
+
+                <!-- Menu Hamburger -->
+                <button class="menu-toggle" aria-label="Ouvrir le menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                </button>
+
                 <nav aria-label="Navigation principale">
-                        <a href="#approche" class="nav-link">Mon Approche</a>
                         <a href="#pourquoi" class="nav-link">Pourquoi Moi?</a>
                         <a href="#forfaits" class="nav-link">Forfaits</a>
                         <a href="#portfolio" class="nav-link">Portfolio</a>
                         <a href="#contato" class="nav-link">Contact</a>
-                        <a href="https://instagram.com/romulo.jleitao" target="_blank" rel="noopener"
-                                aria-label="Suivez-moi sur Instagram" class="nav-link insta-link">
-                                <svg class="instagram-icon" viewBox="0 0 24 24" width="20" height="20">
-                                        <defs>
-                                                <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%"
-                                                        y2="100%">
-                                                        <stop offset="0%" stop-color="#fdf497" />
-                                                        <stop offset="5%" stop-color="#fdf497" />
-                                                        <stop offset="45%" stop-color="#fd5949" />
-                                                        <stop offset="60%" stop-color="#d6249f" />
-                                                        <stop offset="100%" stop-color="#285AEB" />
-                                                </linearGradient>
-                                        </defs>
-                                        <path fill="url(#instagram-gradient)"
-                                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                </svg>
-                                Instagram
-                        </a>
-                        <a href="https://www.facebook.com/romulojorgeleitao" target="_blank" rel="noopener"
-                                aria-label="Suivez-moi sur Facebook" class="nav-link facebook-link">
-                                <svg class="facebook-icon" viewBox="0 0 24 24" width="20" height="20">
-                                        <defs>
-                                                <linearGradient id="facebook-gradient" x1="0%" y1="0%" x2="100%"
-                                                        y2="100%">
-                                                        <stop offset="0%" stop-color="#1877F2" />
-                                                        <stop offset="50%" stop-color="#1877F2" />
-                                                        <stop offset="100%" stop-color="#0A5FCC" />
-                                                </linearGradient>
-                                        </defs>
-                                        <path fill="url(#facebook-gradient)"
-                                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                                </svg>
-                                Facebook
-                        </a>
+
+                        <!-- Liens sociaux -->
+                        <div class="social-links-group">
+                                <a href="https://instagram.com/romulo.jleitao" target="_blank" rel="noopener"
+                                        aria-label="Suivez-moi sur Instagram" class="nav-link insta-link">
+                                        <svg class="instagram-icon" viewBox="0 0 24 24" width="20" height="20">
+                                                <defs>
+                                                        <linearGradient id="instagram-gradient" x1="0%" y1="0%"
+                                                                x2="100%" y2="100%">
+                                                                <stop offset="0%" stop-color="#fdf497" />
+                                                                <stop offset="5%" stop-color="#fdf497" />
+                                                                <stop offset="45%" stop-color="#fd5949" />
+                                                                <stop offset="60%" stop-color="#d6249f" />
+                                                                <stop offset="100%" stop-color="#285AEB" />
+                                                        </linearGradient>
+                                                </defs>
+                                                <path fill="url(#instagram-gradient)"
+                                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                        </svg>
+                                        Instagram
+                                </a>
+                                <a href="https://www.facebook.com/romulojorgeleitao" target="_blank" rel="noopener"
+                                        aria-label="Suivez-moi sur Facebook" class="nav-link facebook-link">
+                                        <svg class="facebook-icon" viewBox="0 0 24 24" width="20" height="20">
+                                                <defs>
+                                                        <linearGradient id="facebook-gradient" x1="0%" y1="0%" x2="100%"
+                                                                y2="100%">
+                                                                <stop offset="0%" stop-color="#1877F2" />
+                                                                <stop offset="50%" stop-color="#1877F2" />
+                                                                <stop offset="100%" stop-color="#0A5FCC" />
+                                                        </linearGradient>
+                                                </defs>
+                                                <path fill="url(#facebook-gradient)"
+                                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                        </svg>
+                                        Facebook
+                                </a>
+                        </div>
                 </nav>
+
+                <!-- Overlay pour mobile -->
+                <div class="nav-overlay"></div>
         </header>
 
         <!-- Nouvelle Hero Section - Plus Impactante -->
@@ -200,8 +214,8 @@
                                                         <div class="diff-content">
                                                                 <h3>Stratégie Basée sur Vos Objectifs</h3>
                                                                 <p>Bac en Administration des Affaires + 10 ans
-                                                                        d'expérience = Je
-                                                                        comprends vos enjeux business</p>
+                                                                        d'expérience = Je crée du contenu qui génère des
+                                                                        résultats</p>
                                                         </div>
                                                 </div>
 
@@ -234,72 +248,17 @@
                                         </div>
 
                                         <div class="hero-cta">
-                                                <a href="#contato" class="cta-button primary">
-                                                        <span>📞 Consultation Gratuite</span>
-                                                        <small>Discutons de vos objectifs</small>
-                                                </a>
                                                 <a href="#forfaits" class="cta-button primary">
                                                         <span>💼 Voir les Forfaits</span>
-                                                        <small>Solutions mensuelles</small>
+                                                        <small>Dès 400$/mois</small> </a>
+                                                <a href="#contato" class="cta-button secondary">
+                                                        <span>📞 Consultation Gratuite</span>
+                                                        <small>Discutons de votre projet</small>
                                                 </a>
                                         </div>
 
                                         <div class="hero-location">
                                                 <span>📍 Basé à Sherbrooke - Disponible dans tout le Québec</span>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </section>
-
-        <!-- Section Mon Approche -->
-        <section id="approche" class="approche">
-                <div class="approche-container">
-                        <h2>MON APPROCHE</h2>
-                        <div class="section-divider"></div>
-
-                        <div class="approche-content">
-                                <div class="approche-section">
-                                        <h3>✅ CE QUE JE FAIS</h3>
-
-                                        <div class="service-category">
-                                                <h4>📸 PHOTOGRAPHIE COMMERCIALE</h4>
-                                                <ul>
-                                                        <li>Produits, plats, services</li>
-                                                        <li>Portraits corporatifs et équipes</li>
-                                                        <li>Espaces et ambiances</li>
-                                                        <li>Événements d'affaires</li>
-                                                </ul>
-                                        </div>
-
-                                        <div class="service-category">
-                                                <h4>🎥 PRODUCTION VIDÉO</h4>
-                                                <ul>
-                                                        <li>Reels et vidéos courtes (15-60s)</li>
-                                                        <li>Contenu dynamique pour réseaux sociaux</li>
-                                                        <li>Vidéos de présentation</li>
-                                                </ul>
-                                        </div>
-
-                                        <div class="service-category">
-                                                <h4>📱 STRATÉGIE DE CONTENU</h4>
-                                                <ul>
-                                                        <li>Calendrier éditorial adapté</li>
-                                                        <li>Publications alignées avec vos objectifs</li>
-                                                        <li>Contenu cohérent avec votre identité</li>
-                                                        <li>Optimisation par plateforme (Instagram, Facebook, LinkedIn)
-                                                        </li>
-                                                </ul>
-                                        </div>
-
-                                        <div class="service-category">
-                                                <h4>💬 GESTION DE RÉSEAUX SOCIAUX (optionnel)</h4>
-                                                <ul>
-                                                        <li>Rédaction de légendes</li>
-                                                        <li>Programmation et publication</li>
-                                                        <li>Interaction avec votre communauté</li>
-                                                        <li>Analyse de performance</li>
-                                                </ul>
                                         </div>
                                 </div>
                         </div>
@@ -315,8 +274,8 @@
                         <div class="pourquoi-content">
                                 <div class="pourquoi-section">
                                         <h3>🎯 PLUS QU'UN PHOTOGRAPHE</h3>
-                                        <p>Je ne fais pas juste de "belles photos".<br>
-                                                Je crée du contenu stratégique basé sur:</p>
+                                        <p>Pas juste de "belles photos".<br>
+                                                Un contenu stratégique basé sur:</p>
                                         <ul>
                                                 <li>Vos objectifs d'affaires</li>
                                                 <li>Votre clientèle cible</li>
@@ -340,7 +299,7 @@
                                 </div>
 
                                 <div class="pourquoi-section">
-                                        <h3>🎬 PHOTO + VIDÉO = PACKAGE COMPLET</h3>
+                                        <h3><span class="diff-icon">📸🎬</span> PHOTO + VIDÉO = PACKAGE COMPLET</h3>
                                         <p>Pourquoi engager un photographe et un vidéaste séparément?</p>
                                         <p><strong>Avec moi, vous avez les deux:</strong></p>
                                         <ul>
@@ -375,11 +334,45 @@
                         <div class="section-divider"></div>
                         <p class="section-subtitle">FORFAITS MENSUELS<br>Production continue de contenu visuel</p>
 
-                        <div class="forfaits-grid">
+                        <div class="forfaits-grid"><!-- Forfait Professionnel -->
+                                <div class="forfait-card">
+                                        <div class="forfait-header">
+                                                <h3><span class="diff-icon">📸</span> FORFAIT PHOTO</h3>
+                                                <div class="forfait-price">400$ <span>/ mois</span></div>
+                                        </div>
+
+                                        <div class="forfait-content">
+                                                <h4>CE QUI EST INCLUS CHAQUE MOIS:</h4>
+                                                <ul>
+                                                        <li>12-15 photos professionnelles</li>
+                                                        <li>Livraison aux 2 semaines</li>
+                                                        <li>Fichiers optimisés (réseaux sociaux, web, impression)</li>
+                                                        <li>Formats variés (carrés, verticaux, horizontaux)</li>
+                                                </ul>
+                                                <div class="forfait-responsability">
+                                                        <h5>VOUS GÉREZ:</h5>
+                                                        <ul>
+                                                                <li>Publication sur vos réseaux</li>
+                                                                <li>Rédaction des légendes</li>
+                                                                <li>Interaction avec votre communauté</li>
+                                                        </ul>
+                                                </div>
+                                                <div>
+                                                        <h5>PARFAIT POUR:</h5>
+                                                        <p>Entreprises qui veulent uniquement de la
+                                                                photographie professionnelle de qualité
+                                                                et gérer le reste elles-mêmes.</p>
+                                                </div>
+
+                                                <button class="forfait-cta contact-trigger"
+                                                        data-forfait="Forfait Professionnel (400$/mois)">Me
+                                                        contacter</button>
+                                        </div>
+                                </div>
                                 <!-- Forfait Création -->
                                 <div class="forfait-card">
                                         <div class="forfait-header">
-                                                <h3>📦 FORFAIT PHOTO + VIDÉO</h3>
+                                                <h3><span class="diff-icon">📸🎬</span> FORFAIT PHOTO + VIDÉO</h3>
                                                 <div class="forfait-price">600$ <span>/ mois</span></div>
                                         </div>
 
@@ -414,33 +407,7 @@
                                         </div>
                                 </div>
 
-                                <!-- Forfait Professionnel -->
-                                <div class="forfait-card">
-                                        <div class="forfait-header">
-                                                <h3>💼 FORFAIT PHOTO</h3>
-                                                <div class="forfait-price">400$ <span>/ mois</span></div>
-                                        </div>
 
-                                        <div class="forfait-content">
-                                                <h4>CE QUI EST INCLUS CHAQUE MOIS:</h4>
-                                                <ul>
-                                                        <li>12-15 photos professionnelles</li>
-                                                        <li>Livraison aux 2 semaines</li>
-                                                        <li>Fichiers optimisés (réseaux sociaux, web, impression)</li>
-                                                        <li>Formats variés (carrés, verticaux, horizontaux)</li>
-                                                </ul>
-                                                <div>
-                                                        <h5>PARFAIT POUR:</h5>
-                                                        <p>Entreprises qui veulent uniquement de la
-                                                                photographie professionnelle de qualité
-                                                                et gérer le reste elles-mêmes.</p>
-                                                </div>
-
-                                                <button class="forfait-cta contact-trigger"
-                                                        data-forfait="Forfait Professionnel (400$/mois)">Me
-                                                        contacter</button>
-                                        </div>
-                                </div>
 
                                 <!-- Forfait Stratégique Complet -->
                                 <div class="forfait-card">
@@ -611,15 +578,21 @@
                         <div class="section-divider"></div>
                         <div class="portfolio-tabs">
                                 <button class="tab-btn active" data-category="all">Tous les projets</button>
+                                <button class="tab-btn" data-category="identite">Commercial</button>
                                 <button class="tab-btn" data-category="gastronomie">Gastronomie</button>
                                 <button class="tab-btn" data-category="evenements">Événements</button>
-                                <button class="tab-btn" data-category="identite">Identité Visuelle</button>
+
                         </div>
 
                         <div class="gallery-grid">
                                 <div class="gallery-item" data-category="gastronomie">
                                         <a href="images/foto42.jpg" class="glightbox" data-gallery="gastronomie">
                                                 <img src="images/foto42.jpg" alt="restaurant" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto17.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto17.jpg" alt="Products" loading="lazy">
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="gastronomie">
@@ -629,10 +602,20 @@
                                                         loading="lazy">
                                         </a>
                                 </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto11.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto11.jpg" alt="Products" loading="lazy">
+                                        </a>
+                                </div>
                                 <div class="gallery-item" data-category="gastronomie">
                                         <a href="images/foto14.jpg" class="glightbox" data-gallery="gastronomie">
                                                 <img src="images/foto14.jpg"
                                                         alt="Photographie gastronomique - plat raffiné" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="evenements">
+                                        <a href="images/foto5.jpg" class="glightbox" data-gallery="evenements">
+                                                <img src="images/foto5.jpg" alt="Politique" loading="lazy">
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="gastronomie">
@@ -647,9 +630,19 @@
                                                         loading="lazy">
                                         </a>
                                 </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto18.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto18.jpg" alt="Products" loading="lazy">
+                                        </a>
+                                </div>
                                 <div class="gallery-item" data-category="gastronomie">
                                         <a href="images/foto23.jpg" class="glightbox" data-gallery="gastronomie">
                                                 <img src="images/foto23.jpg" alt="Cuisine créative" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto7.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto7.jpg" alt="Products" loading="lazy">
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="evenements">
@@ -678,15 +671,15 @@
                                                         loading="lazy">
                                         </a>
                                 </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto8.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto8.jpg" alt="Products" loading="lazy">
+                                        </a>
+                                </div>
                                 <div class="gallery-item" data-category="gastronomie">
                                         <a href="images/foto4.jpg" class="glightbox" data-gallery="gastronomie">
                                                 <img src="images/foto4.jpg" alt="Photographie de restaurant"
                                                         loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto8.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto8.jpg" alt="Course a pied" loading="lazy">
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="gastronomie">
@@ -695,29 +688,8 @@
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto9.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto9.jpg" alt="Piste de danse" loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
                                         <a href="images/foto16.jpg" class="glightbox" data-gallery="evenements">
                                                 <img src="images/foto16.jpg" alt="Piste de danse" loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto17.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto17.jpg" alt="Course a pied" loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto3.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto3.jpg" alt="Mariage" loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto11.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto11.jpg" alt="Événement professionnel"
-                                                        loading="lazy">
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="gastronomie">
@@ -725,25 +697,14 @@
                                                 <img src="images/foto22.jpg" alt="restaurant" loading="lazy">
                                         </a>
                                 </div>
+                                <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto9.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto9.jpg" alt="Products" loading="lazy">
+                                        </a>
+                                </div>
                                 <div class="gallery-item" data-category="gastronomie">
                                         <a href="images/foto40.jpg" class="glightbox" data-gallery="gastronomie">
                                                 <img src="images/foto40.jpg" alt="restaurant" loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto7.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto7.jpg" alt="Événement networking" loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto19.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto19.jpg" alt="Réception d'entreprise"
-                                                        loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto5.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto5.jpg" alt="Lancement de produit" loading="lazy">
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="evenements">
@@ -785,6 +746,11 @@
                                         </a>
                                 </div>
                                 <div class="gallery-item" data-category="identite">
+                                        <a href="images/foto3.jpg" class="glightbox" data-gallery="identite">
+                                                <img src="images/foto3.jpg" alt="Products" loading="lazy">
+                                        </a>
+                                </div>
+                                <div class="gallery-item" data-category="identite">
                                         <a href="images/foto30.jpg" class="glightbox" data-gallery="identite">
                                                 <img src="images/foto30.jpg" alt="Entreprise de pâtes et de pizzas"
                                                         loading="lazy">
@@ -799,11 +765,6 @@
                                 <div class="gallery-item" data-category="evenements">
                                         <a href="images/foto1.jpg" class="glightbox" data-gallery="evenements">
                                                 <img src="images/foto1.jpg" alt="Piste de danse" loading="lazy">
-                                        </a>
-                                </div>
-                                <div class="gallery-item" data-category="evenements">
-                                        <a href="images/foto18.jpg" class="glightbox" data-gallery="evenements">
-                                                <img src="images/foto18.jpg" alt="Course a pied" loading="lazy">
                                         </a>
                                 </div>
                         </div>

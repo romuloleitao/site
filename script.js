@@ -307,31 +307,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Header scroll effect
-    let lastScroll = 0;
-    const header = document.querySelector('header');
-    
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll <= 0) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = 'none';
-            header.style.transform = 'translateY(0)';
-            return;
-        }
-        
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            // Scrolling down
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            header.style.transform = 'translateY(0)';
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        }
-        
-        lastScroll = currentScroll;
-    });
+    const header = document.querySelector('header');
+    const currentScroll = window.pageYOffset;
+    
+    // Adiciona classe 'scrolled' quando faz scroll
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 
     // Protection des images contre le clic droit
     document.addEventListener('contextmenu', function(e) {
@@ -662,27 +648,17 @@ window.RomuloStudio = {
     }
 };
 
-// Menu Hamburger functionality
+// Menu Hamburger functionality - Versão Corrigida
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.createElement('button');
-    menuToggle.className = 'menu-toggle';
-    menuToggle.setAttribute('aria-label', 'Ouvrir le menu');
-    menuToggle.innerHTML = `
-        <span></span>
-        <span></span>
-        <span></span>
-    `;
-
+    const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
-    const header = document.querySelector('header');
-    
-    // Insert menu toggle button
-    header.appendChild(menuToggle);
+    const overlay = document.querySelector('.nav-overlay');
 
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'nav-overlay';
-    document.body.appendChild(overlay);
+    // Verifica se os elementos existem
+    if (!menuToggle || !nav || !overlay) {
+        console.log('Elementos do menu não encontrados');
+        return;
+    }
 
     // Toggle menu function
     function toggleMenu() {
@@ -718,6 +694,8 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleMenu();
         }
     });
+
+    console.log('Menu hamburger inicializado corretamente');
 });
 
 // Analytics personnalisé
