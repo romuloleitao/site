@@ -1,91 +1,114 @@
-// Inicializa o lightbox
-const lightbox = GLightbox({
-    selector: '.glightbox',
-    touchNavigation: true,
-    loop: true,
-    zoomable: false,
-    draggable: false,
+// Initialisation du site
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('📸 Rômulo Studio - Site initialisé');
+    
+    // Initialisation des fonctionnalités
+    initLightbox();
+    initMenuToggle();
+    initPortfolioFilter();
+    initContactForm();
+    initScrollAnimations();
+    initSmoothScroll();
+    
+    // Protection des images
+    initImageProtection();
 });
 
-// CORREÇÃO DO MENU HAMBURGUER - VERSÃO SIMPLIFICADA
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Rômulo Studio - Site initialisé');
+// ============================================
+// LIGHTBOX
+// ============================================
+let lightbox;
 
+function initLightbox() {
+    lightbox = GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        openEffect: 'fade',
+        closeEffect: 'fade'
+    });
+}
+
+function reinitializeLightbox() {
+    if (lightbox) {
+        lightbox.destroy();
+    }
+    initLightbox();
+}
+
+// ============================================
+// MENU TOGGLE - CORRIGIDO
+// ============================================
+function initMenuToggle() {
     const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    const overlay = document.querySelector('.nav-overlay');
+    const nav = document.querySelector('.nav');
     
-    if (menuToggle && nav && overlay) {
-        console.log('✅ Menu elements found');
-        
-        function toggleMenu() {
-            menuToggle.classList.toggle('active');
-            nav.classList.toggle('active');
-            overlay.classList.toggle('active');
-            
-            if (nav.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
+    if (!menuToggle || !nav) return;
+    
+    // Toggle menu
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking on links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+    
+    // Close menu when clicking outside (only on mobile)
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
                 document.body.style.overflow = '';
             }
         }
-        
-        menuToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            toggleMenu();
-        });
-        
-        overlay.addEventListener('click', toggleMenu);
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 968) {
-                    toggleMenu();
-                }
-            });
-        });
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && nav.classList.contains('active')) {
-                toggleMenu();
-            }
-        });
-        
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 968 && nav.classList.contains('active')) {
-                toggleMenu();
-            }
-        });
-        
-        console.log('✅ Menu initialized successfully');
-    }
-
-    // Animation d'apparition des éléments au scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '50px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observer les sections principales
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
     });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close menu on resize if switching to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
 
-    // Filtrage des portfolios
-    const tabBtns = document.querySelectorAll('.tab-btn');
+// ============================================
+// PORTFOLIO FILTER
+// ============================================
+function initPortfolioFilter() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
-
+    
+    if (!filterBtns.length || !galleryItems.length) return;
+    
     function filterGallery(category) {
+        // Update active button
+        filterBtns.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        // Filter items
         galleryItems.forEach(item => {
             if (category === 'all' || item.getAttribute('data-category') === category) {
                 item.style.display = 'inline-block';
@@ -102,173 +125,257 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        setTimeout(() => {
-            reinitializeLightbox();
-        }, 350);
-    }
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            tabBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            filterGallery(this.getAttribute('data-category'));
-        });
-    });
-
-    // Modal functionality
-    const modal = document.getElementById('contactModal');
-    const contactTriggers = document.querySelectorAll('.contact-trigger, .service-cta');
-    const closeBtn = document.querySelector('.modal-close');
-
-    function openModalWithService(serviceName = '') {
-        if (modal) {
-            document.body.style.overflow = 'hidden';
-            modal.classList.add('show');
-            
-            const quickContactForm = document.getElementById('quickContactForm');
-            if (serviceName && quickContactForm) {
-                const serviceSelect = quickContactForm.querySelector('select[name="service"]');
-                if (serviceSelect) {
-                    serviceSelect.value = serviceName;
-                }
-            }
-        }
-    }
-
-    function closeModal() {
-        if (modal) {
-            modal.classList.add('closing');
-            document.body.style.overflow = '';
-            
-            setTimeout(() => {
-                modal.classList.remove('show', 'closing');
-                const quickContactForm = document.getElementById('quickContactForm');
-                if (quickContactForm) quickContactForm.reset();
-            }, 300);
-        }
-    }
-
-    contactTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            const serviceName = this.getAttribute('data-service');
-            openModalWithService(serviceName);
-        });
-    });
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
+        // Reinitialize lightbox
+        setTimeout(reinitializeLightbox, 350);
     }
     
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) closeModal();
+    // Add event listeners to filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const category = this.getAttribute('data-filter');
+            filterGallery.call(this, category);
         });
-    }
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
-            closeModal();
-        }
     });
+}
 
-    // Formulaires
-    const mainContactForm = document.getElementById('mainContactForm');
-    const quickContactForm = document.getElementById('quickContactForm');
-
-    async function submitForm(form, formType = 'principal') {
-        const submitBtn = form.querySelector('.submit-btn');
+// ============================================
+// CONTACT FORM
+// ============================================
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+    
+    if (!contactForm || !formMessage) return;
+    
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            name: this.querySelector('#name').value,
+            email: this.querySelector('#email').value,
+            phone: this.querySelector('#phone').value,
+            service: this.querySelector('#service').value,
+            message: this.querySelector('#message').value
+        };
+        
+        // Validate form
+        if (!formData.name || !formData.email || !formData.service || !formData.message) {
+            showFormMessage('Veuillez remplir tous les champs obligatoires.', 'error', formMessage);
+            return;
+        }
+        
+        // Show loading state
+        const submitBtn = this.querySelector('.btn');
         const btnText = submitBtn.querySelector('.btn-text');
-        const btnLoading = submitBtn.querySelector('.btn-loading');
-
+        const btnLoader = submitBtn.querySelector('.btn-loader');
+        
         btnText.style.display = 'none';
-        btnLoading.style.display = 'flex';
+        btnLoader.style.display = 'flex';
         submitBtn.disabled = true;
-
+        
         try {
-            const data = new FormData(form);
-            const response = await fetch(form.action, {
+            const data = new FormData(this);
+            
+            const response = await fetch(this.action, {
                 method: 'POST',
                 body: data,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                alert('✅ Message envoyé avec succès! Je vous contacterai dans les plus brefs délais.');
-                form.reset();
-                if (formType === 'rapide') {
-                    setTimeout(closeModal, 1000);
+                headers: {
+                    'Accept': 'application/json'
                 }
+            });
+            
+            if (response.ok) {
+                // Success
+                showFormMessage('✅ Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais.', 'success', formMessage);
+                this.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
             } else {
                 throw new Error('Erreur lors de l\'envoi');
             }
+            
         } catch (error) {
-            alert('❌ Erreur lors de l\'envoi. Veuillez réessayer ou me contacter directement.');
+            console.error('Erreur:', error);
+            showFormMessage('❌ Une erreur est survenue. Veuillez me contacter directement par email ou téléphone.', 'error', formMessage);
         } finally {
+            // Reset button state
             btnText.style.display = 'flex';
-            btnLoading.style.display = 'none';
+            btnLoader.style.display = 'none';
             submitBtn.disabled = false;
         }
-    }
+    });
+}
 
-    if (mainContactForm) {
-        mainContactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            await submitForm(mainContactForm, 'principal');
+function showFormMessage(message, type, messageElement) {
+    messageElement.textContent = message;
+    messageElement.className = `form-message ${type}`;
+    messageElement.style.display = 'block';
+    
+    // Scroll to message
+    messageElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ============================================
+// SCROLL ANIMATIONS
+// ============================================
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
         });
-    }
+    }, observerOptions);
+    
+    // Observe sections
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Observe service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+        observer.observe(card);
+    });
+    
+    // Observe features
+    document.querySelectorAll('.feature').forEach(feature => {
+        observer.observe(feature);
+    });
+}
 
-    if (quickContactForm) {
-        quickContactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            await submitForm(quickContactForm, 'rapide');
-        });
-    }
-
-    // Smooth scroll
+// ============================================
+// SMOOTH SCROLL
+// ============================================
+function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#contato') return;
+            
+            // Skip contact form link (handled separately)
+            if (href === '#contact') return;
             
             e.preventDefault();
+            
             const target = document.querySelector(href);
             if (target) {
-                const headerHeight = document.querySelector('header').offsetHeight;
+                const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Close mobile menu if open
+                if (window.innerWidth <= 768) {
+                    const menuToggle = document.querySelector('.menu-toggle');
+                    const nav = document.querySelector('.nav');
+                    menuToggle.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
         });
     });
+}
 
-    // Header scroll
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.pageYOffset > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+// ============================================
+// IMAGE PROTECTION
+// ============================================
+function initImageProtection() {
+    // Prevent right-click on gallery images
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG' && e.target.closest('.gallery-item')) {
+            e.preventDefault();
+            return false;
         }
     });
+    
+    // Prevent drag and drop of gallery images
+    document.addEventListener('dragstart', function(e) {
+        if (e.target.tagName === 'IMG' && e.target.closest('.gallery-item')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+}
 
-    console.log('✅ Site completely loaded');
-});
-
-function reinitializeLightbox() {
-    const existingLightbox = GLightbox.getInstance();
-    if (existingLightbox) {
-        existingLightbox.destroy();
+// ============================================
+// HEADER SCROLL EFFECT
+// ============================================
+let lastScroll = 0;
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+    } else {
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
     }
     
-    GLightbox({
-        selector: '.glightbox',
-        touchNavigation: true,
-        loop: true,
-        zoomable: false,
-        draggable: false,
+    lastScroll = currentScroll;
+});
+
+// ============================================
+// PUBLIC API
+// ============================================
+window.RomuloStudio = {
+    filterPortfolio: function(category) {
+        const btn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+        if (btn) btn.click();
+    },
+    
+    scrollToSection: function(sectionId) {
+        const target = document.querySelector(sectionId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+};
+
+// ============================================
+// PERFORMANCE OPTIMIZATIONS
+// ============================================
+// Debounce function for scroll events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Handle image loading errors
+document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function() {
+        console.warn('Image failed to load:', this.src);
+        this.style.opacity = '0.5';
     });
+    
+    img.addEventListener('load', function() {
+        this.style.opacity = '1';
+    });
+});
+
+// Initial log
+console.log('✨ Site prêt !');
+
+// Mobile detection helper
+function isMobile() {
+    return window.innerWidth <= 768;
 }
